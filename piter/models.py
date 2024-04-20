@@ -96,7 +96,17 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
-
+class Beautiful(models.Model):
+    oid = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=200)
+    name_en = models.CharField(max_length=200)
+    address_manual = models.CharField(max_length=200)
+    phone = models.CharField(max_length=20)
+    www = models.URLField()
+    email = models.EmailField()
+    kitchen = models.CharField(max_length=200, blank=True, null=True)
+    for_disabled = models.CharField(max_length=10)
+    coord = models.CharField(max_length=50)
 class Friendship(models.Model):
     user1 = models.ForeignKey('User', on_delete=models.CASCADE, related_name='friendships_initiated')
     user2 = models.ForeignKey('User', on_delete=models.CASCADE, related_name='friendships_received')
@@ -104,3 +114,11 @@ class Friendship(models.Model):
 
     def __str__(self):
         return f"Friendship between {self.user1.username} and {self.user2.username}"
+
+class KudaGoCategories(models.Model):
+    name = models.CharField(max_length=255)
+    id = models.IntegerField(primary_key=True)
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.name
