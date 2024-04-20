@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>JSON DATA</h1>
+<ul>
+    {% for item in json_data.data %}
+    <li> ID: {{item.id}}, Slug: {{item.slug}}, Name: {{ item.name }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

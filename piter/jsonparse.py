@@ -1,13 +1,10 @@
 import json
 
-from django.shortcuts import HttpResponse
+import requests
+from django.shortcuts import render
 
 from PiterskiyDvish.settings import JWT_TOKEN
-from .models import Beautiful
-import requests
 
-from django.shortcuts import render
-import requests
 
 def import_data_from_url(request):
     url = 'https://spb-afisha.gate.petersburg.ru/kg/external/afisha/categories'
