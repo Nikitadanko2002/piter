@@ -3,10 +3,7 @@
 # from PiterskiyDvish.settings import JWT_TOKEN
 #
 # url = 'https://spb-afisha.gate.petersburg.ru/kg/external/afisha/categories'
-# headers = {
-# 'Content-Type': 'application/json',
-# 'Authorization': f'Bearer {JWT_TOKEN}'
-# }
+
 #
 # response = requests.get(url, headers=headers)
 #

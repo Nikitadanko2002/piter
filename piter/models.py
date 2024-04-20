@@ -1,6 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission
-
+class Beautiful(models.Model):
+    oid = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=200, null=True)
+    name_en = models.CharField(max_length=200, null=True)
+    address_manual = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=20, null=True)
+    www = models.URLField(null=True)
+    email = models.EmailField(null=True)
+    kitchen = models.CharField(max_length=200, blank=True, null=True)
+    for_disabled = models.CharField(max_length=10, null=True)
+    coord = models.CharField(max_length=50, null=True)
 
 class Event(models.Model):
     title = models.CharField(max_length=255)
@@ -97,17 +107,7 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
-class Beautiful(models.Model):
-    oid = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=200, null=True)
-    name_en = models.CharField(max_length=200, null=True)
-    address_manual = models.CharField(max_length=200, null=True)
-    phone = models.CharField(max_length=20, null=True)
-    www = models.URLField(null=True)
-    email = models.EmailField(null=True)
-    kitchen = models.CharField(max_length=200, blank=True, null=True)
-    for_disabled = models.CharField(max_length=10, null=True)
-    coord = models.CharField(max_length=50, null=True)
+
 class Friendship(models.Model):
     user1 = models.ForeignKey('User', on_delete=models.CASCADE, related_name='friendships_initiated')
     user2 = models.ForeignKey('User', on_delete=models.CASCADE, related_name='friendships_received')
