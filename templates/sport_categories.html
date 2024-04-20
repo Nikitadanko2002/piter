@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Sports Events</title>
+</head>
+<body>
+    <h1>All Sports Events</h1>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'sports_by_category' category %}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
