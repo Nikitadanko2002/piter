@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Мой сайт</title>
 </head>
 <body>
-$END$
+    <header>
+        <h1>Мой сайт</h1>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Мой сайт</p>
+    </footer>
 </body>
 </html>

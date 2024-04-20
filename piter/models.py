@@ -14,6 +14,7 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+# class Categories(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=255)
@@ -98,15 +99,15 @@ class Location(models.Model):
 
 class Beautiful(models.Model):
     oid = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=200)
-    name_en = models.CharField(max_length=200)
-    address_manual = models.CharField(max_length=200)
-    phone = models.CharField(max_length=20)
-    www = models.URLField()
-    email = models.EmailField()
+    name = models.CharField(max_length=200, null=True)
+    name_en = models.CharField(max_length=200, null=True)
+    address_manual = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=20, null=True)
+    www = models.URLField(null=True)
+    email = models.EmailField(null=True)
     kitchen = models.CharField(max_length=200, blank=True, null=True)
-    for_disabled = models.CharField(max_length=10)
-    coord = models.CharField(max_length=50)
+    for_disabled = models.CharField(max_length=10, null=True)
+    coord = models.CharField(max_length=50, null=True)
 class Friendship(models.Model):
     user1 = models.ForeignKey('User', on_delete=models.CASCADE, related_name='friendships_initiated')
     user2 = models.ForeignKey('User', on_delete=models.CASCADE, related_name='friendships_received')
