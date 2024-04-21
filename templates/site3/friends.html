@@ -61,33 +61,20 @@
     <section class="u-black u-clearfix u-container-align-center u-valign-middle u-section-1" id="carousel_843a">
       <h2 class="u-align-center u-text u-text-default u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500">Мои друзьяшки </h2>
       <div class="u-list u-list-1">
-        <div class="u-repeater u-repeater-1">
-          <div class="u-align-center u-container-style u-list-item u-opacity u-opacity-90 u-repeater-item u-shape-rectangle u-white u-list-item-1" data-animation-name="customAnimationIn" data-animation-duration="1500">
-            <div class="u-container-layout u-similar-container u-container-layout-1">
-              <img alt="" class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-1" data-image-width="379" data-image-height="337" src="../../static/images/image.png">
-              <h4 class="u-align-center u-text u-text-2">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-black u-btn-1" href="profile.html">ГУСЬ</a>
-              </h4>
-            </div>
-          </div>
-          <div class="u-align-center u-container-style u-list-item u-opacity u-opacity-90 u-repeater-item u-shape-rectangle u-white u-list-item-2" data-animation-name="customAnimationIn" data-animation-duration="1500">
-            <div class="u-container-layout u-similar-container u-container-layout-2">
-              <img alt="" class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-2" src="../../static/images/2024-04-21013311.png" data-image-width="552" data-image-height="436">
-              <h4 class="u-align-center u-text u-text-3">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-black u-btn-2" href="profile.html">АААА ДОРА</a>
-              </h4>
-            </div>
-          </div>
-          <div class="u-align-center u-container-style u-list-item u-opacity u-opacity-90 u-repeater-item u-shape-rectangle u-white u-list-item-3" data-animation-name="customAnimationIn" data-animation-duration="1500">
-            <div class="u-container-layout u-similar-container u-container-layout-3">
-              <img alt="" class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-3" data-image-width="345" data-image-height="326" src="../../static/images/2024-04-21013620.png">
-              <h4 class="u-align-center u-text u-text-4">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-3" href="profile.html">МИША</a>
-              </h4>
-            </div>
-          </div>
-        </div>
+  <div class="u-repeater u-repeater-1">
+    {% for user in users %}
+    <div class="u-align-center u-container-style u-list-item u-opacity u-opacity-90 u-repeater-item u-shape-rectangle u-white">
+      <div class="u-container-layout u-similar-container u-container-layout-1">
+        <img alt="{{ user.first_name }}" class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-1" src="{{ user.avatar.url }}" data-image-width="379" data-image-height="337">
+        <h4 class="u-align-center u-text u-text-2">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-black u-btn-1" href="{% url 'profile' user_id=user.id %}">{{ user.first_name }}</a>
+        </h4>
       </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
     </section>
     
     

@@ -23,6 +23,11 @@ urlpatterns = [
     path('mainn/', views.mainn, name='mainn'),
     path('fr/', views.friendss, name='friends'),
     path('user/<int:user_id>/friends/', views.user_friends, name='user_friends'),
+    path('user/<int:user_id>/profile/', views.profile, name='profile'),
+
+    path('all_users/', views.all_users, name='all_users'),
+
+
 
 
 ]

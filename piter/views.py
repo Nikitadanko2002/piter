@@ -162,3 +162,12 @@ def user_friends(request, user_id):
         return JsonResponse({'friends': friend_list})
     except User.DoesNotExist:
         return JsonResponse({'error': 'User not found'}, status=404)
+
+
+def all_users(request):
+    users = User.objects.all()
+    return render(request, 'site3/friends.html', {'users': users})
+
+def profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'site3/profile.html', {'user': user})
