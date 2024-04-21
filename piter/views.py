@@ -144,7 +144,7 @@ def user_profile(request, user_id):
     return render(request, 'Site3/index.html', {'user': user})
 
 def eventtt(request):
-    return render(request, 'Site3/typeEvent.html')
+    return render(request, 'typeEvent.html')
 
 def friendss(request):
     return render(request, 'Site3/friends.html')
@@ -152,6 +152,15 @@ def friendss(request):
 
 def mainn(request):
     return render(request, 'Site3/index.html')
+
+def eventRest(request):
+    return render(request, 'eventRest.html')
+
+def eventStude(request):
+    return render(request, 'eventStude.html')
+
+def eventSport(request):
+    return render(request, 'eventSport.html')
 
 
 def user_friends(request, user_id):

@@ -21,11 +21,15 @@ urlpatterns = [
     path('main/<int:user_id>/', views.user_profile, name='user_profile'),
     path('events/', views.eventtt, name='events'),
     path('mainn/', views.mainn, name='mainn'),
-    path('fr/', views.friendss, name='friends'),
+    path('eventSport/', views.eventSport, name='eventSport'),
+    path('eventRest/', views.eventRest, name='eventRest'),
+    path('eventStude/', views.eventStude, name='eventStude'),
+    path('mainn/', views.mainn, name='mainn'),
+    path('fr/', views.friendss, name=''),
     path('user/<int:user_id>/friends/', views.user_friends, name='user_friends'),
     path('user/<int:user_id>/profile/', views.profile, name='profile'),
 
-    path('all_users/', views.all_users, name='all_users'),
+    path('all_users/', views.all_users, name='friends'),
 
 
 
