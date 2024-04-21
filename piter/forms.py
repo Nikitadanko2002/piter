@@ -11,3 +11,11 @@ class EventForm(forms.ModelForm):
         model = Event
 
         fields = ['title', 'description', 'start_date', 'end_date', 'location', 'organizer']
+
+from django import forms
+from .models import Group
+
+class GroupForm(forms.ModelForm):
+    class Meta:
+        model = Group
+        fields = ['name', 'description', 'size', 'members']

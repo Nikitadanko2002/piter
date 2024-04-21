@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission
-
+from django.contrib.auth.models import Permission
+from django.db import models
+from django.urls import reverse
 
 # class Event(models.Model):
 #     title = models.CharField(max_length=255)
@@ -14,8 +16,7 @@ from django.contrib.auth.models import AbstractUser, Permission
 #     def __str__(self):
 #         return self.title
 
-from django.contrib.auth.models import Permission
-from django.db import models
+
 
 
 class Location(models.Model):
@@ -36,8 +37,10 @@ class User(models.Model):
     friends = models.ManyToManyField('self', blank=True)
     user_permissions = models.ManyToManyField(Permission, blank=True, related_name='user_permission_users')
 
+    # def get_absolute_url(self):
+    #     return reverse('profile', kwargs={'pk': self.pk})
     def __str__(self):
-        return self.username
+        return self.first_name
 
 
 class Group(models.Model):

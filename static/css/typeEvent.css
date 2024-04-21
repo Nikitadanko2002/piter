@@ -1,0 +1,114 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 826px;
+}
+
+.u-section-1 .u-layout-wrap-1 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.u-section-1 .u-image-1 {
+  min-height: 400px;
+  background-image: url("images/86f78dd7-6fde-0de5-d9c1-723611bfb061.png");
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 0;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 0 auto 0 8px;
+}
+
+.u-section-1 .u-image-2 {
+  min-height: 400px;
+  background-image: url("images/estyle-education-concept-cheerful-good-looking-redhead-female-student-with-foxy-long-hair-wearing-headphones-neck-backpack-.jpg");
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 0;
+}
+
+.u-section-1 .u-text-2 {
+  margin: 0 auto 0 8px;
+}
+
+.u-section-1 .u-image-3 {
+  min-height: 400px;
+  background-image: url("images/279506181-0.png");
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-container-layout-3 {
+  padding: 0;
+}
+
+.u-section-1 .u-text-3 {
+  margin: 0 auto 0 8px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 400px;
+  }
+
+  .u-section-1 .u-layout-wrap-1 {
+    position: relative;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 330px;
+  }
+
+  .u-section-1 .u-image-2 {
+    min-height: 330px;
+  }
+
+  .u-section-1 .u-image-3 {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-image-1 {
+    min-height: 253px;
+  }
+
+  .u-section-1 .u-image-2 {
+    min-height: 253px;
+  }
+
+  .u-section-1 .u-image-3 {
+    min-height: 253px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-image-1 {
+    min-height: 569px;
+  }
+
+  .u-section-1 .u-image-2 {
+    min-height: 569px;
+  }
+
+  .u-section-1 .u-image-3 {
+    min-height: 569px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-image-1 {
+    min-height: 358px;
+  }
+
+  .u-section-1 .u-image-2 {
+    min-height: 358px;
+  }
+
+  .u-section-1 .u-image-3 {
+    min-height: 358px;
+  }
+}

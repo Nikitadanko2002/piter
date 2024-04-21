@@ -1,9 +1,9 @@
 import requests
 from django.shortcuts import render, redirect, get_object_or_404
-from rest_framework import viewsets
 
-from .forms import EventForm
-from .models import Event
+
+from .forms import EventForm, GroupForm
+from .models import Event, Group, User
 from .serializers import EventSerializer
 
 def event_list(request):
@@ -16,7 +16,7 @@ def event_create(request):
         form = EventForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('event_create')
+            return redirect('event_list')
     else:
         form = EventForm()
     return render(request, 'event_create.html', {'form': form})
@@ -44,13 +44,30 @@ def event_delete(request, event_id):
     return render(request, 'event_delete.html', {'event': event})
 
 
+def show_categories_event(request):
+    # Получаем данные о категориях
+    categories_url = 'https://spb-afisha.gate.petersburg.ru/kg/external/afisha/categories'
+    response = requests.get(categories_url)
+    json_response = response.json()
+    categories = json_response['data']
+    return render(request, 'Site3/index.html', {'categories': categories})
+
+
+import json
+from django.http import JsonResponse
+import requests
+
+
 def show_categories(request):
     # Получаем данные о категориях
     categories_url = 'https://spb-afisha.gate.petersburg.ru/kg/external/afisha/categories'
     response = requests.get(categories_url)
     json_response = response.json()
     categories = json_response['data']
-    return render(request, 'categories.html', {'categories': categories})
+
+    # Возвращаем JSON-ответ с данными о категориях
+    return JsonResponse(categories, safe=False)
+
 
 def show_events_by_category(request, category_slug):
     events_url = f'https://spb-afisha.gate.petersburg.ru/kg/external/afisha/events?lat=59.939016&lng=30.31588&radius=5&categories={category_slug}&fields=categories%2Cdescription%2Cid%2Cplace%2Ctitle%2Cage_restriction%2Cis_free%2Cimages&expand=images%2Cplace%2Clocation%2Cdates%2Cparticipants&page=1&count=10'
@@ -89,3 +106,59 @@ def show_sports_by_category(request, category_name):
     return render(request, 'sports_by_category.html', {'category_name': category_name, 'sports': sports})
 
 
+def group_list(request):
+    groups = Group.objects.all()
+    return render(request, 'group_list.html', {'groups': groups})
+
+def group_create(request):
+    if request.method == 'POST':
+        form = GroupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('group_list')
+    else:
+        form = GroupForm()
+    return render(request, 'group_create.html', {'form': form})
+
+def group_update(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    if request.method == 'POST':
+        form = GroupForm(request.POST, instance=group)
+        if form.is_valid():
+            form.save()
+            return redirect('group_list')
+    else:
+        form = GroupForm(instance=group)
+    return render(request, 'group_update.html', {'form': form})
+
+def group_delete(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    if request.method == 'POST':
+        group.delete()
+        return redirect('group_list')
+    return render(request, 'group_delete.html', {'group': group})
+
+
+def user_profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'Site3/index.html', {'user': user})
+
+def eventtt(request):
+    return render(request, 'Site3/typeEvent.html')
+
+def friendss(request):
+    return render(request, 'Site3/friends.html')
+
+
+def mainn(request):
+    return render(request, 'Site3/index.html')
+
+
+def user_friends(request, user_id):
+    try:
+        user = User.objects.get(id=user_id)
+        friends = user.friends.all()
+        friend_list = [{'id': friend.id, 'avatar':friend.avatar.url, 'first_name': friend.first_name, 'second_name': friend.second_name} for friend in friends]
+        return JsonResponse({'friends': friend_list})
+    except User.DoesNotExist:
+        return JsonResponse({'error': 'User not found'}, status=404)

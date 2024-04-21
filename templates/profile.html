@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+
+        <img src="{{ user.avatar.url }}" alt="Avatar">
+
+
+
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Second Name: {{ user.second_name }}</p>
+    <p>Bio: {{ user.bio }}</p>
+    <h2>Friends:</h2>
+    <ul>
+        {% for friend in user.friends.all %}
+            <li>{{ friend }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

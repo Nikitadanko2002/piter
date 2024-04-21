@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+from django.conf import settings
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +26,7 @@ SECRET_KEY = 'django-insecure--462^1$5p+zfj&0n2!9*w7+g5bxp4itt!kt7^0z$xx9k2686xf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'piter.apps.PiterConfig',
     'rest_framework',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -78,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'piter',
         'USER': 'postgres',
-        'PASSWORD': 'Leti_1773',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -101,7 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # Добавьте этот бэкенд для использования встроенной аутентификации Django
+    'social_core.backends.vk.VKOAuth2',  # Добавьте бэкенд VK для аутентификации через ВКонтакте
+]
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -116,9 +124,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 JWT_TOKEN = os.getenv('JWT_TOKEN')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# import os
+# from pyngrok import ngrok
+#
+# # Добавьте это в конец файла settings.py
+# if 'RUN_MAIN' not in os.environ:
+#     ngrok_tunnel = ngrok.connect('8000')
+#     print('ngrok tunnel URL:', ngrok_tunnel.public_url)
